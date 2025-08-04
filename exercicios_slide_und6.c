@@ -1,5 +1,12 @@
 #include <stdio.h>
 
+typedef struct {
+
+    int num;
+    int den;
+}fracao;
+
+
 int soma(int a, int b){     //'a' e 'b' são os parametros, soma é o nome da funcao
 int s;
 s = a + b;
@@ -45,9 +52,51 @@ int somavetor(int vet[50], int n){
     return soma;
 }
 
+fracao somaf(fracao a, fracao b){
+    fracao k;
+
+    k.num = (a.num * b.den) + (a.den * b.num);
+    k.den = a.den * b.den;
+
+    return k;
+}
+
+fracao multif(fracao a, fracao b){
+    fracao r;
+
+   r.num = a.num * b.num;
+   r.den = a.den * b.den;
+
+   return r;
+}
+
+fracao divf(fracao a, fracao b){
+    fracao s;
+
+    s.num = a.num * b.den;
+    s.den = a.den * b.num;
+
+    return s;
+}
+
+fracao subf(fracao a, fracao b){
+    fracao g;
+
+    g.num = (a.num * b.den) - (a.den * b.num);
+    g.den = a.den * b.den;
+
+    return g;
+}
+
 int main(){
     int x, y;
+    fracao a, b, c;
     int vet[50];
+
+    for(int i = 0; i< 50; i++){
+        vet[i] = i + 1;
+    }
+
 
     printf("Insira dois numeros para serem somados: ");
     scanf("%d %d", &x, &y);
@@ -58,13 +107,18 @@ int main(){
     printf("Insira o numero para ver o N-ésimo elemento em fibonacci: ");
     scanf("%d", &x);
     printf("\nelemento %d de fibonacci = %d\n", x, fibonacci(x));
-    printf("Insira o nomero de alocações que voce quer no seu vetor: ");
-    scanf("%d", &x);
-    printf("\nAgora preencha o seu vetor, para no final ver a soma de todos: ");
-    for(int i = 0; i < x; i++){
-        scanf("%d", &vet[i]);
-    }
-    printf("\nSoma = %d\n", somavetor(vet, x));
+    printf("\nSoma de todos os espaços do vetor = %d\n", somavetor(vet, 50));
+    printf("Média da soma anterior= %d\n", somavetor(vet, 50) / 50);
+    printf("\nInsira duas frações para efetuar os calculos: (nesse formato: x/y w/z)\n");
+    scanf("%d/%d %d/%d", &a.num,  &a.den, &b.num, &b.den);
+    c = somaf(a, b);
+    printf("\nSoma de %d/%d + %d/%d = %d/%d\n", a.num, a.den, b.num, b.den, c.num, c.den);
+    c = subf(a, b);
+    printf("\nSubtração de %d/%d - %d/%d = %d/%d\n", a.num, a.den, b.num, b.den, c.num, c.den);
+    c = multif(a, b);
+    printf("\nMultiplicação de %d/%d * %d/%d = %d/%d\n", a.num, a.den, b.num, b.den, c.num, c.den);
+    c = divf(a, b);
+    printf("\nDivisão de %d/%d / %d/%d = %d/%d\n", a.num, a.den, b.num, b.den, c.num, c.den);
     
     return 0;
 }

@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include <string.h>
-#include <math.h>
+
+
+//Recursividade é utilizar a mesma função para gerar um loop, semelhante a um laço de repetição.
 
 long long fatorial(int n){
     if(n==0)
@@ -25,86 +26,20 @@ int fibonacci(int n){
 
 }
 
-long conversao(long n){ // decimal para binario
-
+long long conversao(int n){ // decimal para binario
     if (n == 0)
         return 0;
     else 
-        return (n % 2) + 10 * conversao(n /2);
+        return (n % 2) + 10 * conversao(n / 2);
 }
 
-//conversor de decimais para binarios:
-
-char* dec2binRev(int dec, char *s){
-    char temp[17];
-
-    if (dec < 2)
-    {
-        sprintf(s, "%hd", dec);
-        return s;
-    }
+int conversaobin2dec(long n){ // binario para decimal
+    if (n == 0)
+        return 0;
     else
-    {
-        sprintf(s, "%hd", dec % 2);
-        strcpy(temp, s);
-        strcat(s, dec2binRev(dec / 2, temp));
-        return s;
-    }
-
+        return (n % 10) + 2 * conversaobin2dec(n / 10);
 }
 
-// inversao da cadeia de bits:
-
-char* strrev(char *str, int i, int j){
-    char aux;
-    if(i >= j)
-        return str;
-    else{
-        aux = str[i];
-        str[i] = str[j];
-        str[j] = aux;
-
-        strcpy(str, strrev(str, ++i, --j));
-
-        return str;
-    }
-}
-
-//decimal para binario
-
-char* dec2bin(int dec, char* s){
-    s = dec2binRev(dec, s);
-    strcpy(s, strrev(s, 0, strlen(s) - 1));
-    return s;
-}
-
-int bin2dec(char *bits, int n) {
-    int bit = bits[0] - 48;
-
-    if (n == 1)
-        return bit*pow(2, n - 1);
-    else 
-    return bit*pow(2, n - 1) + bin2dec(&bits[1], n - 1);
-}
-
-/*int main() {
-    int x, s, f;
-    long c;
-    long long z;
-
-    scanf("%d", &x);
-    z = fatorial(x);
-    s = soma(x);
-    f = fibonacci(x);
-    c = conversao(x);
-    printf("\nFatorial: %lld\n", z);
-    printf("\nSoma dos numeros anteriores ate o 0: %d\n", s);
-    printf("\nN-ésimo elemento de Fibonacci: %d\n", f);
-    printf("\nConversão para binário: %ld\n", c);
-
-    return 0;
-}
-*/
 
 int main(){
 
@@ -122,11 +57,15 @@ printf("\n\n");
 
 printf("\n\n");
 
-    for(int i = 0; i <= 40; i++){
-        printf("Conversão de decimal (%d) para binario = %ld\n", i, conversao(i));
+    for(int i = 0; i <= 200; i++){
+        printf("Conversão de decimal (%d) para binario = %lld\n", i, conversao(i));
     }
 
     printf("\n\n");
+
+    for(int i = 0; i <= 200; i++){
+        printf("Conversão de binario (%lld) para decimal = %d\n", conversao(i), conversaobin2dec(conversao(i)));
+    }
 
     return 0;
 }
