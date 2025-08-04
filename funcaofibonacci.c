@@ -28,7 +28,7 @@ int main() {
     printf("fibonacci(%d) = %ld\n", i, fibonacci(i));
     }
 
-    long long resp = fatorial(11) + fibonacci(11);
+    long resp = fatorial(11) + fibonacci(11);
     printf("resp = %ld\n", resp);
     printf("\n");
     return 0;
