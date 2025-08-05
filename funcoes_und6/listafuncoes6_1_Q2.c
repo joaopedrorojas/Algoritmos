@@ -6,11 +6,11 @@ typedef struct{
     float imag; // parte imaginaria
 } complexo;
 
-int scanC(complexo *c){
+float scanC(complexo *c){
     scanf("(%f %fi)", &c->real, &c->imag);
 }
 
-int printC(complexo c){
+float printC(complexo c){
     printf("(%f %fi)", c.real, c.imag);
 }
 
@@ -59,6 +59,18 @@ complexo div(complexo a, complexo b){
 
 int main() {
     
+    complexo n1, n2;
+    char op;
+
+    scanC(n1);
+
+    switch (op){
+
+        case'+':
+            printf("(%f %fi)", soma(n1.real, n1.imag));
+
+    }
+
 
 
     return 0;
