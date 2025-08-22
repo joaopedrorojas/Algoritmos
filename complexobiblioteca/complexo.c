@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+#include "complexo.h"
 
 //definicao do tipo complexo
 typedef struct{
@@ -6,12 +8,13 @@ typedef struct{
     float imag; // parte imaginaria
 } complexo;
 
-float scanC(complexo *c){
-    scanf("(%f %fi)", &c->real, &c->imag);
+
+int scanComplexo(complexo *c){
+    scanf("(%f %fi%*c)", &c->real, &c->imag);
 }
 
-float printC(complexo c){
-    printf("(%f %fi)", c.real, c.imag);
+void printComplexo(complexo c){
+    printf("(%.0f %+.0fi)\n", c.real, c.imag);
 }
 
 
@@ -57,21 +60,5 @@ complexo div(complexo a, complexo b){
     return res;
 }
 
-int main() {
+
     
-    complexo n1, n2;
-    char op;
-
-    scanC(n1);
-
-    switch (op){
-
-        case'+':
-            printf("(%f %fi)", soma(n1.real, n1.imag));
-
-    }
-
-
-
-    return 0;
-}

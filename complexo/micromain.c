@@ -5,10 +5,10 @@
 int main() {
     COMPLEXO A, B;
  
-    leComplexo(&A);
-    leComplexo(&B);
+    scanComplexo(&A);
+    scanComplexo(&B);
     
-    escreveComplexo(A);
-    escreveComplexo(B);
+    printComplexo(A);
+    printComplexo(B);
     return 0;
 }
