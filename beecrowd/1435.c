@@ -1,28 +1,36 @@
-#include <stdlib.h>
 #include <stdio.h>
 
-int min(int a, int b)
-{
-    return a < b ? a : b;
-}
+int main() {
+    
+    int n;
 
-int main()
-{
-    int N;
+    while(scanf("%d", &n) && n != 0){
 
-    while (scanf("%d", &N) != EOF)
-    {
-        if (N == 0)
-        {
-            break;
+        int inicio = 0, fim = n -1;
+        int matriz[100][100];
+        int valor = 1;
+        int camadas = (n + 1) / 2;
+
+    for(int j = 0; j < camadas; j++){
+        for(int i = inicio; i <= fim; i++){
+            matriz[inicio][i] = valor;
+            matriz[i][inicio] = valor;
+            matriz[fim][i] = valor;
+            matriz[i][fim] = valor;
         }
+        inicio++;
+        fim--;
+        valor++;
 
-        for (int i = 0; i < N; ++i)
-        {
-            printf("%3d", 1);
-            for (int j = 1; j < N; ++j)
-            {
-                printf("%4d", min(min(i, N - i - 1), min(j, N - j - 1)) + 1);
+        }
+        
+        for(int k = 0; k < n; k++){
+            for(int l = 0; l < n; l++){
+
+                if(l ==0)
+                    printf("%3d", matriz[k][l]);
+                else
+                    printf(" %3d", matriz[k][l]);
             }
             printf("\n");
         }

@@ -29,12 +29,13 @@ int main() {
     scanf("%f", &lista[i].peso);
     printf("Qual seu sexo? (M / F)\n");
     scanf(" %c", &lista[i].sexo);
+    getchar(); // consume leftover newline
     } 
 
     printf("\nTodos os convidados:\n");
 
-    for(int j = 1; j < 6; j++){
-        printf("%d - %s", j, lista[j]. nome);
+    for(int j = 0; j < 5; j++){
+        printf("%d - %s", j + 1, lista[j].nome);
     }
 
     return 0;

@@ -10,7 +10,7 @@ int main() {
     printf("Quantas linhas e quantas colunas voce deseja na matriz?\n");
     scanf("%d %d", &i, &j);
 
-    //tentar alocacar o vetor de linhas
+    //tentar alocacar o vetor de colunas
     M = (int**)malloc(sizeof(int*) * i); // sizeof pois é o tamanho de bytes que cabe em um inteiro*
 
         if(M == NULL){
